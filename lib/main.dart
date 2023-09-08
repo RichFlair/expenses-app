@@ -9,13 +9,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -28,10 +24,21 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter App'),
-        backgroundColor: Colors.blue,
       ),
-      body: const Center(
-        child: Text('Widget Playground'),
+      body: Column(
+        children: [
+          Card(
+              color: Colors.blue,
+              child: Container(
+                width: double.infinity,
+                child: const Text('CHARTS'),
+              )),
+          const Card(
+            child: Text(
+              'LIST OF TX',
+            ),
+          ),
+        ],
       ),
     );
   }
