@@ -1,3 +1,4 @@
+import 'package:expenses_tracker/transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
     );
@@ -17,7 +18,22 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
+
+  final List<Transaction> transactions = [
+    Transaction(
+      id: 't1',
+      title: 'Sneakers',
+      amount: 20,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Shirts',
+      amount: 10,
+      date: DateTime.now(),
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +42,8 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Card(
               color: Colors.blue,
@@ -34,6 +52,7 @@ class MyHomePage extends StatelessWidget {
                 child: const Text('CHARTS'),
               )),
           const Card(
+            color: Colors.red,
             child: Text(
               'LIST OF TX',
             ),
