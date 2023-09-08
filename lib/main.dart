@@ -1,5 +1,6 @@
-import 'package:expenses_tracker/transaction.dart';
 import 'package:flutter/material.dart';
+
+import 'package:expenses_tracker/transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,16 +47,18 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Card(
-              color: Colors.blue,
-              child: Container(
-                width: double.infinity,
-                child: const Text('CHARTS'),
-              )),
-          const Card(
-            color: Colors.red,
-            child: Text(
-              'LIST OF TX',
+            color: Colors.blue,
+            child: Container(
+              width: double.infinity,
+              child: const Text('CHARTS'),
             ),
+          ),
+          Column(
+            children: transactions.map((tx) {
+              return Card(
+                child: Text(tx.title),
+              );
+            }).toList(),
           ),
         ],
       ),
