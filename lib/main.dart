@@ -25,13 +25,13 @@ class MyHomePage extends StatelessWidget {
     Transaction(
       id: 't1',
       title: 'Sneakers',
-      amount: 20,
+      amount: 20.25,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
       title: 'Shirts',
-      amount: 10,
+      amount: 10.59,
       date: DateTime.now(),
     )
   ];
@@ -59,6 +59,18 @@ class MyHomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.black,
+                          style: BorderStyle.solid,
+                          width: 2,
+                        ),
+                      ),
+                      padding: const EdgeInsets.all(7),
                       child: Text(tx.amount.toString()),
                     ),
                     Column(
