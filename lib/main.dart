@@ -58,6 +58,7 @@ class MyHomePage extends StatelessWidget {
               return Card(
                 child: Row(
                   children: [
+                    //Price container
                     Container(
                       margin: const EdgeInsets.symmetric(
                         vertical: 15,
@@ -65,19 +66,40 @@ class MyHomePage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.black,
+                          color: Colors.purple,
                           style: BorderStyle.solid,
                           width: 2,
                         ),
                       ),
                       padding: const EdgeInsets.all(7),
-                      child: Text(tx.amount.toString()),
+                      // price
+                      child: Text(
+                        tx.amount.toString(),
+                        style: const TextStyle(
+                          color: Colors.purple,
+                          fontSize: 15,
+                        ),
+                      ),
                     ),
+                    // title and date
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(tx.title),
+                        // title
+                        Text(
+                          tx.title,
+                          style: const TextStyle(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        // date
                         Text(
                           tx.date.toString(),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ),
                         ),
                       ],
                     )
