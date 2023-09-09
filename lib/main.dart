@@ -44,9 +44,9 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // charts
           Card(
             child: Container(
               color: Colors.blue,
@@ -54,6 +54,35 @@ class MyHomePage extends StatelessWidget {
               child: const Text('CHARTS'),
             ),
           ),
+          Container(
+            margin: const EdgeInsets.all(5),
+            child: const Card(
+              elevation: 3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (null),
+                    child: Text(
+                      'Add Transaction',
+                      style: TextStyle(color: Colors.purple),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+          //transactions column
           Column(
             children: transactions.map((tx) {
               return Card(
