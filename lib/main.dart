@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:expenses_tracker/transaction.dart';
 
@@ -43,12 +44,12 @@ class MyHomePage extends StatelessWidget {
         title: const Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Card(
-            color: Colors.blue,
             child: Container(
+              color: Colors.blue,
               width: double.infinity,
               child: const Text('CHARTS'),
             ),
@@ -74,7 +75,7 @@ class MyHomePage extends StatelessWidget {
                       padding: const EdgeInsets.all(7),
                       // price
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
                         style: const TextStyle(
                           color: Colors.purple,
                           fontSize: 15,
@@ -90,12 +91,15 @@ class MyHomePage extends StatelessWidget {
                         Text(
                           tx.title,
                           style: const TextStyle(
-                            color: Colors.purple,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         // date
                         Text(
-                          tx.date.toString(),
+                          DateFormat.yMMMEd().format(
+                            tx.date,
+                          ),
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
