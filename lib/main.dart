@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   final List<Transaction> transactions = [
     Transaction(
       id: 't1',
@@ -54,26 +57,36 @@ class MyHomePage extends StatelessWidget {
               child: const Text('CHARTS'),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            child: const Card(
-              elevation: 3,
+          // input card
+          Card(
+            elevation: 3,
+            child: Container(
+              margin: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Title',
                     ),
+                    controller: titleController,
                   ),
                   TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Amount',
                     ),
+                    controller: amountController,
                   ),
-                  ElevatedButton(
-                    onPressed: (null),
-                    child: Text(
+                  TextButton(
+                    onPressed: () {
+                      print(
+                        titleController.text,
+                      );
+                      print(
+                        amountController.text,
+                      );
+                    },
+                    child: const Text(
                       'Add Transaction',
                       style: TextStyle(color: Colors.purple),
                     ),
