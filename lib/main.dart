@@ -27,19 +27,21 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter App'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // charts
-          Card(
-            child: Container(
-              color: Colors.blue,
-              width: double.infinity,
-              child: const Text('CHARTS'),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // charts
+            Card(
+              child: Container(
+                color: Colors.blue,
+                width: double.infinity,
+                child: const Text('CHARTS'),
+              ),
             ),
-          ),
-          const UserTransactions(),
-        ],
+            const UserTransactions(),
+          ],
+        ),
       ),
     );
   }
