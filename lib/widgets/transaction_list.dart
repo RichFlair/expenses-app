@@ -1,8 +1,9 @@
+import 'package:expenses_tracker/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
-  final List transactions;
+  final List<Transaction> transactions;
   const TransactionList({
     super.key,
     required this.transactions,
