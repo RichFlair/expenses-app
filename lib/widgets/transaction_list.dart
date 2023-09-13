@@ -1,5 +1,6 @@
-import 'package:expenses_tracker/models/transaction.dart';
 import 'package:flutter/material.dart';
+
+import 'package:expenses_tracker/models/transaction.dart';
 import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
@@ -33,7 +34,7 @@ class TransactionList extends StatelessWidget {
                 padding: const EdgeInsets.all(7),
                 // price
                 child: Text(
-                  '\$${tx.amount}',
+                  '\$${tx.amount.toStringAsFixed(2)}',
                   style: const TextStyle(
                     color: Colors.purple,
                     fontSize: 15,
