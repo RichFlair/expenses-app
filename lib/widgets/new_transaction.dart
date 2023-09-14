@@ -44,6 +44,7 @@ class _NewTransactionState extends State<NewTransaction> {
           children: [
             // title
             TextField(
+              autofocus: true,
               decoration: const InputDecoration(
                 labelText: 'Title',
               ),
@@ -52,6 +53,7 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             // amount
             TextField(
+              autofocus: true,
               decoration: const InputDecoration(
                 labelText: 'Amount',
               ),
