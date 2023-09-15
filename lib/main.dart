@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:expenses_tracker/models/transaction.dart';
 import 'package:expenses_tracker/widgets/new_transaction.dart';
 import 'package:expenses_tracker/widgets/transaction_list.dart';
+import 'package:expenses_tracker/widgets/chart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,6 +54,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [];
 
+  List<Transaction> get _recentTransaction {
+    return _userTransactions.where((element) {
+      return element.date
+          .isAfter(DateTime.now().subtract(const Duration(days: 7)));
+    }).toList();
+  }
+
   void _addNewTransaction(String title, double amount) {
     final newTransaction = Transaction(
       id: DateTime.now().toString(),
@@ -96,6 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // charts
+            Chart(recentTransaction: _recentTransaction),
+            // transaction list
             TransactionList(transactions: _userTransactions),
           ],
         ),
