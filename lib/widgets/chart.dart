@@ -46,12 +46,15 @@ class Chart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: groupedTransactionValue.map(
             (e) {
-              return ChartBar(
-                label: e['day'].toString(),
-                price: e['amount'] as double,
-                percentageOfPrice: overAllAmount == 0.0
-                    ? 0.0
-                    : (e['amount'] as double) / overAllAmount,
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  label: e['day'].toString(),
+                  price: e['amount'] as double,
+                  percentageOfPrice: overAllAmount == 0.0
+                      ? 0.0
+                      : (e['amount'] as double) / overAllAmount,
+                ),
               );
             },
           ).toList(),
