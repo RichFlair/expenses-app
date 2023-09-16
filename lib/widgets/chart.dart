@@ -1,3 +1,4 @@
+import 'package:expenses_tracker/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,6 +29,12 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get overAllAmount {
+    return groupedTransactionValue.fold(0.0, (previousValue, element) {
+      return (element['amount'] as double) + previousValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -35,7 +42,13 @@ class Chart extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: Row(
           children: groupedTransactionValue.map((e) {
-        return Text('${e['day']}: ${e['amount']}');
+        return ChartBar(
+          label: e['day'].toString(),
+          price: e['amount'] as double,
+          percentageOfPrice: overAllAmount == 0.0
+              ? 0.0
+              : (e['amount'] as double) / overAllAmount,
+        );
       }).toList()),
     );
   }
