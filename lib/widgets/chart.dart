@@ -40,16 +40,23 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: const EdgeInsets.all(20),
-      child: Row(
-          children: groupedTransactionValue.map((e) {
-        return ChartBar(
-          label: e['day'].toString(),
-          price: e['amount'] as double,
-          percentageOfPrice: overAllAmount == 0.0
-              ? 0.0
-              : (e['amount'] as double) / overAllAmount,
-        );
-      }).toList()),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionValue.map(
+            (e) {
+              return ChartBar(
+                label: e['day'].toString(),
+                price: e['amount'] as double,
+                percentageOfPrice: overAllAmount == 0.0
+                    ? 0.0
+                    : (e['amount'] as double) / overAllAmount,
+              );
+            },
+          ).toList(),
+        ),
+      ),
     );
   }
 }
