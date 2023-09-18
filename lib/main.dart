@@ -20,22 +20,32 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         textTheme: ThemeData.light().textTheme.copyWith(
-            titleMedium: const TextStyle(
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
+              titleMedium: const TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+              titleLarge: const TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 23,
+              ),
+              titleSmall: const TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+                fontSize: 12,
+              ),
+              labelLarge: const TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              labelMedium: const TextStyle(
+                fontSize: 15,
+                fontFamily: 'Quicksand',
+              ),
             ),
-            titleLarge: const TextStyle(
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.bold,
-              fontSize: 23,
-            ),
-            titleSmall: const TextStyle(
-              fontFamily: 'Quicksand',
-              fontWeight: FontWeight.w400,
-              color: Colors.grey,
-              fontSize: 12,
-            )),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'Opensans',

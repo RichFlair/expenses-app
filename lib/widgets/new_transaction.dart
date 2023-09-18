@@ -60,14 +60,32 @@ class _NewTransactionState extends State<NewTransaction> {
               controller: amountController,
               onSubmitted: (value) => submitData(),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text(
+                    'No date Choosen',
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Choose date',
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
             // add transaction
-            TextButton(
+            ElevatedButton(
               onPressed: submitData,
               child: Text(
                 'Add Transaction',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColorDark,
-                ),
+                style: Theme.of(context).textTheme.labelLarge,
               ),
             )
           ],
