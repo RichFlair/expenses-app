@@ -18,7 +18,7 @@ class ChartBar extends StatelessWidget {
         SizedBox(
           height: 20,
           child: FittedBox(
-            child: Text('\$$price'),
+            child: Text('¢$price'),
           ),
         ),
         const SizedBox(

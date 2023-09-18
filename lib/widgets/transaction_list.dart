@@ -45,7 +45,7 @@ class TransactionList extends StatelessWidget {
                         radius: 30,
                         child: FittedBox(
                           fit: BoxFit.contain,
-                          child: Text('\$${transactions[index].amount}'),
+                          child: Text('¢${transactions[index].amount}'),
                         ),
                       ),
                       title: Text(transactions[index].title,
