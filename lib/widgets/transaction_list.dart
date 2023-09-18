@@ -5,9 +5,12 @@ import 'package:expenses_tracker/models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTransaction;
+
   const TransactionList({
     super.key,
     required this.transactions,
+    required this.deleteTransaction,
   });
 
   @override
@@ -54,9 +57,14 @@ class TransactionList extends StatelessWidget {
                         DateFormat.yMMMEd().format(transactions[index].date),
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
-                      trailing: const IconButton(
-                        onPressed: null,
-                        icon: Icon(Icons.delete),
+                      trailing: IconButton(
+                        onPressed: () {
+                          deleteTransaction(transactions[index].id);
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
                       ),
                     ),
                   ),
