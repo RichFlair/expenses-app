@@ -20,17 +20,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         textTheme: ThemeData.light().textTheme.copyWith(
-              titleMedium: const TextStyle(
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-              ),
-              titleLarge: const TextStyle(
-                fontFamily: 'Quicksand',
-                fontWeight: FontWeight.bold,
-                fontSize: 23,
-              ),
+            titleMedium: const TextStyle(
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
             ),
+            titleLarge: const TextStyle(
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.bold,
+              fontSize: 23,
+            ),
+            titleSmall: const TextStyle(
+              fontFamily: 'Quicksand',
+              fontWeight: FontWeight.w400,
+              color: Colors.grey,
+              fontSize: 12,
+            )),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'Opensans',
@@ -99,16 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // charts
-            Chart(recentTransaction: _recentTransaction),
-            // transaction list
-            TransactionList(transactions: _userTransactions),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // charts
+          Chart(recentTransaction: _recentTransaction),
+          // transaction list
+          TransactionList(transactions: _userTransactions),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
