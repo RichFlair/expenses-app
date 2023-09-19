@@ -109,6 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  bool _showChart = false;
+
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
@@ -126,23 +128,39 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // charts
-            SizedBox(
-                height: ((MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).viewPadding.top) *
-                    0.22),
-                child: Chart(recentTransaction: _recentTransaction)),
-            // transaction list
-            SizedBox(
-              height: ((MediaQuery.of(context).size.height -
-                      appBar.preferredSize.height -
-                      MediaQuery.of(context).viewPadding.top) *
-                  0.78),
-              child: TransactionList(
-                  transactions: _userTransactions,
-                  deleteTransaction: _deleteTransaction),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Show Chart'),
+                Switch(
+                  value: _showChart,
+                  onChanged: (value) {
+                    setState(() {
+                      _showChart = value;
+                    });
+                  },
+                ),
+              ],
             ),
+            // charts
+            _showChart
+                ? SizedBox(
+                    height: ((MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).viewPadding.top) *
+                        0.22),
+                    child: Chart(recentTransaction: _recentTransaction),
+                  )
+                // transaction list
+                : SizedBox(
+                    height: ((MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height -
+                            MediaQuery.of(context).viewPadding.top) *
+                        0.78),
+                    child: TransactionList(
+                        transactions: _userTransactions,
+                        deleteTransaction: _deleteTransaction),
+                  ),
           ],
         ),
       ),
