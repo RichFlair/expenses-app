@@ -113,6 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     final appBar = AppBar(
       title: const Text('Personal Expenses'),
       actions: [
@@ -122,45 +124,59 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ],
     );
+
+    final txWidget = SizedBox(
+      height: ((MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).viewPadding.top) *
+          0.6),
+      child: TransactionList(
+          transactions: _userTransactions,
+          deleteTransaction: _deleteTransaction),
+    );
+
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Show Chart'),
-                Switch(
-                  value: _showChart,
-                  onChanged: (value) {
-                    setState(() {
-                      _showChart = value;
-                    });
-                  },
-                ),
-              ],
-            ),
-            // charts
-            _showChart
-                ? SizedBox(
-                    height: ((MediaQuery.of(context).size.height -
-                            appBar.preferredSize.height -
-                            MediaQuery.of(context).viewPadding.top) *
-                        0.6),
-                    child: Chart(recentTransaction: _recentTransaction),
-                  )
-                // transaction list
-                : SizedBox(
-                    height: ((MediaQuery.of(context).size.height -
-                            appBar.preferredSize.height -
-                            MediaQuery.of(context).viewPadding.top) *
-                        0.6),
-                    child: TransactionList(
-                        transactions: _userTransactions,
-                        deleteTransaction: _deleteTransaction),
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Show Chart'),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    },
                   ),
+                ],
+              ),
+            if (isLandscape == false)
+              SizedBox(
+                height: ((MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height -
+                        MediaQuery.of(context).viewPadding.top) *
+                    0.22),
+                child: Chart(recentTransaction: _recentTransaction),
+              ),
+            if (isLandscape == false) txWidget,
+            // charts
+            if (isLandscape)
+              _showChart
+                  ? SizedBox(
+                      height: ((MediaQuery.of(context).size.height -
+                              appBar.preferredSize.height -
+                              MediaQuery.of(context).viewPadding.top) *
+                          0.6),
+                      child: Chart(recentTransaction: _recentTransaction),
+                    )
+                  // transaction list
+                  : txWidget
           ],
         ),
       ),
