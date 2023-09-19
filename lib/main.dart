@@ -99,6 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: NewTransaction(addTx: _addNewTransaction),
         );
       },
+      showDragHandle: true,
     );
   }
 
@@ -120,16 +121,18 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // charts
-          Chart(recentTransaction: _recentTransaction),
-          // transaction list
-          TransactionList(
-              transactions: _userTransactions,
-              deleteTransaction: _deleteTransaction),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // charts
+            Chart(recentTransaction: _recentTransaction),
+            // transaction list
+            TransactionList(
+                transactions: _userTransactions,
+                deleteTransaction: _deleteTransaction),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
