@@ -113,8 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
       title: const Text('Personal Expenses'),
       actions: [
@@ -126,9 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     final txWidget = SizedBox(
-      height: ((MediaQuery.of(context).size.height -
+      height: ((mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).viewPadding.top) *
+              mediaQuery.viewPadding.top) *
           0.6),
       child: TransactionList(
           transactions: _userTransactions,
@@ -158,9 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (isLandscape == false)
               SizedBox(
-                height: ((MediaQuery.of(context).size.height -
+                height: ((mediaQuery.size.height -
                         appBar.preferredSize.height -
-                        MediaQuery.of(context).viewPadding.top) *
+                        mediaQuery.viewPadding.top) *
                     0.22),
                 child: Chart(recentTransaction: _recentTransaction),
               ),
@@ -169,9 +169,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (isLandscape)
               _showChart
                   ? SizedBox(
-                      height: ((MediaQuery.of(context).size.height -
+                      height: ((mediaQuery.size.height -
                               appBar.preferredSize.height -
-                              MediaQuery.of(context).viewPadding.top) *
+                              mediaQuery.viewPadding.top) *
                           0.6),
                       child: Chart(recentTransaction: _recentTransaction),
                     )
